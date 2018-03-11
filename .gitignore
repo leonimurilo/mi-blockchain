@@ -9,6 +9,6 @@
 .DS_Store
 .project
 
-channel-artifacts/*.tx
-channel-artifacts/*.block
+configtx/*.tx
+configtx/*.block
 crypto-config/*
