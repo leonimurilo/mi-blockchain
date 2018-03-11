@@ -68,4 +68,4 @@ done
 
 echo
 echo "${Green}All settings were successfully applied!${NC}"
-echo
+echoc
