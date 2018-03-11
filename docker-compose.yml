@@ -26,7 +26,7 @@ services:
     volumes:
         - ./config/configtx/:/etc/hyperledger/configtxtx
         - ./config/crypto-config/ordererOrganizations/leonimurilo.com/orderers/orderer.leonimurilo.com/:/etc/hyperledger/msp/orderer
-        - ./config/crypto-config/peerOrganizations/org1.leonimurilo.com/peers/peer0.org1.leonimurilo.com/:/etc/hyperledger/msp/peerOrg1
+        # - ./config/crypto-config/peerOrganizations/org1.leonimurilo.com/peers/peer0.org1.leonimurilo.com/:/etc/hyperledger/msp/peerOrg1
     networks:
       - mi_network
 
