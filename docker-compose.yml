@@ -16,7 +16,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
       - ORDERER_GENERAL_GENESISMETHOD=file
-      - ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/configtxtx/genesis.block
+      - ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/configtx/genesis.block
       - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
       - ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/msp/orderer/msp
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/orderer
@@ -24,7 +24,7 @@ services:
     ports:
       - 7050:7050
     volumes:
-        - ./config/configtx/:/etc/hyperledger/configtxtx
+        - ./config/configtx/:/etc/hyperledger/configtx
         - ./config/crypto-config/ordererOrganizations/leonimurilo.com/orderers/orderer.leonimurilo.com/:/etc/hyperledger/msp/orderer
         # - ./config/crypto-config/peerOrganizations/org1.leonimurilo.com/peers/peer0.org1.leonimurilo.com/:/etc/hyperledger/msp/peerOrg1
     networks:
@@ -63,7 +63,7 @@ services:
         - /var/run/:/host/var/run/
         - ./config/crypto-config/peerOrganizations/supplier1.leonimurilo.com/peers/peer0.supplier1.leonimurilo.com/msp:/etc/hyperledger/msp/peer
         - ./config/crypto-config/peerOrganizations/supplier1.leonimurilo.com/users:/etc/hyperledger/msp/users
-        - ./config/configtx:/etc/hyperledger/configtxtx
+        - ./config/configtx:/etc/hyperledger/configtx
     depends_on:
       - orderer.leonimurilo.com
       - couchdb.supplier1.leonimurilo.com
@@ -159,7 +159,7 @@ services:
         - /var/run/:/host/var/run/
         - ./config/crypto-config/peerOrganizations/supplier2.leonimurilo.com/peers/peer0.supplier2.leonimurilo.com/msp:/etc/hyperledger/msp/peer
         - ./config/crypto-config/peerOrganizations/supplier2.leonimurilo.com/users:/etc/hyperledger/msp/users
-        - ./config/configtx:/etc/hyperledger/configtxtx
+        - ./config/configtx:/etc/hyperledger/configtx
     depends_on:
       - orderer.leonimurilo.com
       - couchdb.supplier2.leonimurilo.com
@@ -254,7 +254,7 @@ services:
         - /var/run/:/host/var/run/
         - ./config/crypto-config/peerOrganizations/city1.leonimurilo.com/peers/peer0.city1.leonimurilo.com/msp:/etc/hyperledger/msp/peer
         - ./config/crypto-config/peerOrganizations/city1.leonimurilo.com/users:/etc/hyperledger/msp/users
-        - ./config/configtx:/etc/hyperledger/configtxtx
+        - ./config/configtx:/etc/hyperledger/configtx
     depends_on:
       - orderer.leonimurilo.com
       - couchdb.city1.leonimurilo.com
