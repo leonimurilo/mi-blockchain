@@ -66,7 +66,7 @@ services:
         - ./config/configtx:/etc/hyperledger/configtxtx
     depends_on:
       - orderer.leonimurilo.com
-      - couchdb
+      - couchdb.supplier1.leonimurilo.com
     networks:
       - mi_network
 
@@ -124,7 +124,7 @@ services:
     #depends_on:
     #  - orderer.leonimurilo.com
     #  - peer0.supplier1.leonimurilo.com
-    #  - couchdb
+    #  - couchdb.supplier1.leonimurilo.com
 
   # =========== Supplier 2
   peer0.supplier2.leonimurilo.com:
@@ -162,7 +162,7 @@ services:
         - ./config/configtx:/etc/hyperledger/configtxtx
     depends_on:
       - orderer.leonimurilo.com
-      - couchdb
+      - couchdb.supplier2.leonimurilo.com
     networks:
       - mi_network
 
@@ -219,7 +219,7 @@ services:
     #depends_on:
     #  - orderer.leonimurilo.com
     #  - peer0.supplier2.leonimurilo.com
-    #  - couchdb
+    #  - couchdb.supplier2.leonimurilo.com
 
   # =========== City 1
   peer0.city1.leonimurilo.com:
@@ -257,7 +257,7 @@ services:
         - ./config/configtx:/etc/hyperledger/configtxtx
     depends_on:
       - orderer.leonimurilo.com
-      - couchdb
+      - couchdb.city1.leonimurilo.com
     networks:
       - mi_network
 
@@ -314,4 +314,4 @@ services:
     #depends_on:
     #  - orderer.leonimurilo.com
     #  - peer0.city1.leonimurilo.com
-    #  - couchdb
+    #  - couchdb.city1.leonimurilo.co
