@@ -20,7 +20,6 @@
 #
 ################################################################################
 Profiles:
-
     ThreeOrgsOrdererGenesis:
         Orderer:
             <<: *OrdererDefaults
@@ -29,13 +28,17 @@ Profiles:
         Consortiums:
             SampleConsortium:
                 Organizations:
-                    - *Org1
+                    - *Supplier1
+                    - *Supplier2
+                    - *City1
     ThreeOrgsChannel:
         Consortium: SampleConsortium
         Application:
             <<: *ApplicationDefaults
             Organizations:
-                - *Org1
+              - *Supplier1
+              - *Supplier2
+              - *City1
 
 ################################################################################
 #
@@ -46,37 +49,53 @@ Profiles:
 #
 ################################################################################
 Organizations:
-
     # SampleOrg defines an MSP using the sampleconfig.  It should never be used
     # in production but may be used as a template for other definitions
     - &OrdererOrg
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
         Name: OrdererOrg
-
         # ID to load the MSP definition as
         ID: OrdererMSP
-
         # MSPDir is the filesystem path which contains the MSP configuration
-        MSPDir: crypto-config/ordererOrganizations/example.com/msp
+        MSPDir: config/crypto-config/ordererOrganizations/leonimurilo.com/msp
 
-    - &Org1
+    - &Supplier1
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: Org1MSP
-
-        # ID to load the MSP definition as
-        ID: Org1MSP
-
-        MSPDir: crypto-config/peerOrganizations/org1.example.com/msp
-
+        Name: Supplier1MSP
+        ID: Supplier1MSP
+        MSPDir: config/crypto-config/peerOrganizations/supplier1.leonimurilo.com/msp
         AnchorPeers:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: peer0.org1.example.com
+            - Host: peer0.supplier1.leonimurilo.com
               Port: 7051
-
+    - &Supplier2
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: Supplier2MSP
+        ID: Supplier2MSP
+        MSPDir: config/crypto-config/peerOrganizations/supplier2.leonimurilo.com/msp
+        AnchorPeers:
+            # AnchorPeers defines the location of peers which can be used
+            # for cross org gossip communication.  Note, this value is only
+            # encoded in the genesis block in the Application section context
+            - Host: peer0.supplier2.leonimurilo.com
+              Port: 7051
+    - &City1
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: City1MSP
+        ID: City1MSP
+        MSPDir: config/crypto-config/peerOrganizations/city1.leonimurilo.com/msp
+        AnchorPeers:
+            # AnchorPeers defines the location of peers which can be used
+            # for cross org gossip communication.  Note, this value is only
+            # encoded in the genesis block in the Application section context
+            - Host: peer0.city1.leonimurilo.com
+              Port: 7051
 ################################################################################
 #
 #   SECTION: Orderer
@@ -86,32 +105,24 @@ Organizations:
 #
 ################################################################################
 Orderer: &OrdererDefaults
-
     # Orderer Type: The orderer implementation to start
     # Available types are "solo" and "kafka"
     OrdererType: solo
-
     Addresses:
-        - orderer.example.com:7050
-
+        - orderer.leonimurilo.com:7050
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s
-
     # Batch Size: Controls the number of messages batched into a block
     BatchSize:
-
         # Max Message Count: The maximum number of messages to permit in a batch
         MaxMessageCount: 10
-
         # Absolute Max Bytes: The absolute maximum number of bytes allowed for
         # the serialized messages in a batch.
         AbsoluteMaxBytes: 99 MB
-
         # Preferred Max Bytes: The preferred maximum number of bytes allowed for
         # the serialized messages in a batch. A message larger than the preferred
         # max bytes will result in a batch larger than preferred max bytes.
         PreferredMaxBytes: 512 KB
-
     Kafka:
         # Brokers: A list of Kafka brokers to which the orderer connects
         # NOTE: Use IP:port notation
