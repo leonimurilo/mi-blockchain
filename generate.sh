@@ -79,4 +79,6 @@ done
 
 echo
 echo "${Green}All settings were successfully applied!${NC}"
-echoc
+echo
+
+exit 0
