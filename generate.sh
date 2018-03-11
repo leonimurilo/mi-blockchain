@@ -9,8 +9,8 @@ export FABRIC_CFG_PATH=${PWD}
 CHANNEL_NAME=mi-flow-channel
 
 # remove previous crypto material and config transactions
-rm -fr config/*
-rm -fr crypto-config/*
+rm -fr config/configtx/*
+rm -fr config/crypto-config/*
 
 # generate crypto material
 cryptogen generate --config=./crypto-config.yaml --output="./config/crypto-config"
