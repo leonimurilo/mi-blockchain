@@ -21,7 +21,7 @@
 ################################################################################
 Profiles:
 
-    OneOrgOrdererGenesis:
+    ThreeOrgsOrdererGenesis:
         Orderer:
             <<: *OrdererDefaults
             Organizations:
@@ -30,7 +30,7 @@ Profiles:
             SampleConsortium:
                 Organizations:
                     - *Org1
-    OneOrgChannel:
+    ThreeOrgsChannel:
         Consortium: SampleConsortium
         Application:
             <<: *ApplicationDefaults
