@@ -12,13 +12,24 @@ CHANNEL_PROFILE=ThreeOrgsChannel
 
 # change or add here
 declare -a ORGS_MSPS=("Supplier1MSP" "Supplier2MSP" "City1MSP")
+declare -a BINARIES=("configtxgen" "cryptogen")
 
 # colors
+Red='\033[0;31m'
 Green='\033[0;32m'
 Blue='\033[0;34m'
 Purple='\033[0;35m'
 Cyan='\033[0;36m'
 NC='\033[0m'
+
+for BINARY in "${BINARIES[@]}"
+do
+  which $BINARY
+  if [ "$?" -ne 0 ]; then
+    echo "${Red}$BINARY tool not found. exiting...${NC}"
+    exit 1
+  fi
+done
 
 # remove previous crypto material and config transactions
 rm -fr config/configtx/*
