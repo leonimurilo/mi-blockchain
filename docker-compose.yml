@@ -39,7 +39,7 @@ services:
       - CORE_PEER_ID=peer0.supplier1.leonimurilo.com
       - CORE_LOGGING_PEER=debug
       - CORE_CHAINCODE_LOGGING_LEVEL=DEBUG
-      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_LOCALMSPID=Supplier1MSP
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/
       - CORE_PEER_ADDRESS=peer0.supplier1.leonimurilo.com:7051
       # # the following setting starts chaincode containers on the same
@@ -110,8 +110,8 @@ services:
       - CORE_LOGGING_LEVEL=DEBUG
       - CORE_PEER_ID=cli.supplier1.leonimurilo.com
       - CORE_PEER_ADDRESS=peer0.supplier1.leonimurilo.com:7051
-      - CORE_PEER_LOCALMSPID=Org1MSP
-      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/supplier1.leonimurilo.com/users/Admin@org1.leonimurilo.com/msp
+      - CORE_PEER_LOCALMSPID=Supplier1MSP
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/supplier1.leonimurilo.com/users/Admin@supplier1.leonimurilo.com/msp
       - CORE_CHAINCODE_KEEPALIVE=10
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: /bin/bash
@@ -135,7 +135,7 @@ services:
       - CORE_PEER_ID=peer0.supplier2.leonimurilo.com
       - CORE_LOGGING_PEER=debug
       - CORE_CHAINCODE_LOGGING_LEVEL=DEBUG
-      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_LOCALMSPID=Supplier2MSP
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/
       - CORE_PEER_ADDRESS=peer0.supplier2.leonimurilo.com:7051
       # # the following setting starts chaincode containers on the same
@@ -205,8 +205,8 @@ services:
       - CORE_LOGGING_LEVEL=DEBUG
       - CORE_PEER_ID=cli.supplier2.leonimurilo.com
       - CORE_PEER_ADDRESS=peer0.supplier2.leonimurilo.com:7051
-      - CORE_PEER_LOCALMSPID=Org1MSP
-      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/supplier2.leonimurilo.com/users/Admin@org1.leonimurilo.com/msp
+      - CORE_PEER_LOCALMSPID=Supplier2MSP
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/supplier2.leonimurilo.com/users/Admin@supplier2.leonimurilo.com/msp
       - CORE_CHAINCODE_KEEPALIVE=10
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: /bin/bash
@@ -230,7 +230,7 @@ services:
       - CORE_PEER_ID=peer0.city1.leonimurilo.com
       - CORE_LOGGING_PEER=debug
       - CORE_CHAINCODE_LOGGING_LEVEL=DEBUG
-      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_LOCALMSPID=City1MSP
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/
       - CORE_PEER_ADDRESS=peer0.city1.leonimurilo.com:7051
       # # the following setting starts chaincode containers on the same
@@ -300,8 +300,8 @@ services:
       - CORE_LOGGING_LEVEL=DEBUG
       - CORE_PEER_ID=cli.city1.leonimurilo.com
       - CORE_PEER_ADDRESS=peer0.city1.leonimurilo.com:7051
-      - CORE_PEER_LOCALMSPID=Org1MSP
-      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/city1.leonimurilo.com/users/Admin@org1.leonimurilo.com/msp
+      - CORE_PEER_LOCALMSPID=City1MSP
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/city1.leonimurilo.com/users/Admin@city1.leonimurilo.com/msp
       - CORE_CHAINCODE_KEEPALIVE=10
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: /bin/bash
