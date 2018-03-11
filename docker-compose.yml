@@ -70,7 +70,7 @@ services:
     networks:
       - mi_network
 
-  ca0.supplier1.leonimurilo.com:
+  ca.supplier1.leonimurilo.com:
     container_name: ca.leonimurilo.com
     image: hyperledger/fabric-ca
     environment:
@@ -127,7 +127,7 @@ services:
     networks:
       - mi_network
 
-  ca0.supplier2.leonimurilo.com:
+  ca.supplier2.leonimurilo.com:
     container_name: ca.leonimurilo.com
     image: hyperledger/fabric-ca
     environment:
@@ -183,7 +183,7 @@ services:
     networks:
       - mi_network
 
-  ca0.city1.leonimurilo.com:
+  ca.city1.leonimurilo.com:
     image: hyperledger/fabric-ca
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
