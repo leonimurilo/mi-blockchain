@@ -9,6 +9,6 @@
 .DS_Store
 .project
 
-configtx/*.tx
-configtx/*.block
-crypto-config/*
+config/configtx/*.tx
+config/configtx/*.block
+config/crypto-config/*
