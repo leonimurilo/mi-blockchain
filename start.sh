@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
+#
 # Copyright IBM Corp All Rights Reserved
 # SPDX-License-Identifier: Apache-2.0
 # Exit on first error, print all commands.
 # set -ev
 # colors
-
 Red='\033[0;31m'
 Green='\033[0;32m'
 Blue='\033[0;34m'
@@ -12,11 +12,13 @@ Purple='\033[0;35m'
 Cyan='\033[0;36m'
 NC='\033[0m'
 
+CHANNEL_NAME="mi-flow-channel"
 # don't rewrite paths for Windows Git Bash users
 export MSYS_NO_PATHCONV=1
 
 # orgs declaration
 declare -a ORGS_LIST=("supplier1" "supplier2" "city1")
+# declare -a ORGS_LIST=("supplier1")
 
 docker-compose -f docker-compose.yml down
 echo "running containers"
@@ -47,23 +49,26 @@ echo "========= Creating channel on ${Purple}peer0.supplier1.leonimurilo.com${NC
 docker exec \
 -e "CORE_PEER_LOCALMSPID=Supplier1MSP" \
 -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@supplier1.leonimurilo.com/msp" \
-peer0.supplier1.leonimurilo.com peer channel create \
+peer0.supplier1.leonimurilo.com \
+peer channel create \
 -o orderer.leonimurilo.com:7050 \
--c mi-flow-channel \
+-c $CHANNEL_NAME \
 -f /etc/hyperledger/configtx/channel.tx
 echo "========= ${Cyan}Done!${NC}"
 
 for ORG in "${ORGS_LIST[@]}"
 do
+  ORG_MSP="$(tr '[:lower:]' '[:upper:]' <<< ${ORG:0:1})${ORG:1}MSP"
 
   echo
   echo "========= Joining channel on ${Purple}peer0.$ORG.leonimurilo.com${NC}"
-  # Join peer0.$ORG.leonimurilo.com to the channel.
+
   docker exec \
   -e "CORE_PEER_LOCALMSPID=$ORG_MSP" \
   -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@$ORG.leonimurilo.com/msp" \
   peer0.$ORG.leonimurilo.com peer channel join \
-  -b mi-flow-channel.block
+  -b $CHANNEL_NAME.block
+
   echo "========= ${Cyan}Done!${NC}"
   echo
   echo
