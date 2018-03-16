@@ -118,6 +118,7 @@ services:
     volumes:
         - /var/run/:/host/var/run/
         - ./../mi-smart-contract/:/opt/gopath/src/github.com/
+        - ./config/configtx:/etc/hyperledger/configtx/
         - ./config/crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
     networks:
         - mi_network
@@ -213,6 +214,7 @@ services:
     volumes:
         - /var/run/:/host/var/run/
         - ./../mi-smart-contract/:/opt/gopath/src/github.com/
+        - ./config/configtx:/etc/hyperledger/configtx/
         - ./config/crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
     networks:
         - mi_network
@@ -308,6 +310,7 @@ services:
     volumes:
         - /var/run/:/host/var/run/
         - ./../mi-smart-contract/:/opt/gopath/src/github.com/
+        - ./config/configtx:/etc/hyperledger/configtx/
         - ./config/crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
     networks:
         - mi_network
