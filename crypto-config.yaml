@@ -8,42 +8,42 @@ OrdererOrgs:
 PeerOrgs:
   - Name: supplier1
     Domain: supplier1.leonimurilo.com
-    CA:
-      Hostname: ca
-      Country: BR
-      Province: São Paulo
-      Locality: Campinas
+    # CA:
+    #   Hostname: ca
+    #   Country: BR
+    #   Province: São Paulo
+    #   Locality: Campinas
     Template:
       Count: 1
     Users:
       Count: 1
-    SANS:
-      - "supplier1"
+    # SANS:
+    #   - "supplier1"
 
   - Name: supplier2
     Domain: supplier2.leonimurilo.com
-    CA:
-      Hostname: ca
-      Country: BR
-      Province: São Paulo
-      Locality: Valinhos
+    # CA:
+    #   Hostname: ca
+    #   Country: BR
+    #   Province: São Paulo
+    #   Locality: Valinhos
     Template:
       Count: 1
     Users:
       Count: 1
-    SANS:
-      - "supplier2"
+    # SANS:
+    #   - "supplier2"
 
   - Name: city1
     Domain: city1.leonimurilo.com
-    CA:
-      Hostname: ca
-      Country: BR
-      Province: São Paulo
-      Locality: Campinas
+    # CA:
+    #   Hostname: ca
+    #   Country: BR
+    #   Province: São Paulo
+    #   Locality: Campinas
     Template:
       Count: 1
     Users:
       Count: 1
-    SANS:
-      - "city1"
+    # SANS:
+    #   - "city1"
