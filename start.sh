@@ -21,7 +21,7 @@ declare -a ORGS_LIST=("supplier1" "supplier2" "city1")
 # declare -a ORGS_LIST=("supplier1")
 
 docker-compose -f docker-compose.yml down
-echo "running containers"
+echo -e "running containers"
 docker-compose -f docker-compose.yml up -d
 
 # without CLI:
@@ -39,13 +39,15 @@ docker-compose -f docker-compose.yml up -d
 
 # wait for Hyperledger Fabric to start
 # incase of errors when running later commands, issue export FABRIC_START_TIMEOUT=<larger number>
-export FABRIC_START_TIMEOUT=10
-echo Waiting ${FABRIC_START_TIMEOUT} seconds
-sleep ${FABRIC_START_TIMEOUT}
 
-echo
-echo "========= Creating channel on ${Purple}peer0.supplier1.leonimurilo.com${NC}"
-# Create the channel
+
+# export FABRIC_START_TIMEOUT=10
+# echo -e Waiting ${FABRIC_START_TIMEOUT} seconds
+# sleep ${FABRIC_START_TIMEOUT}
+#
+# echo -e
+# echo -e "========= Creating channel on ${Purple}peer0.supplier1.leonimurilo.com${NC}"
+# # Create the channel
 # docker exec \
 # -e "CORE_PEER_LOCALMSPID=Supplier1MSP" \
 # -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@supplier1.leonimurilo.com/msp" \
@@ -54,25 +56,25 @@ echo "========= Creating channel on ${Purple}peer0.supplier1.leonimurilo.com${NC
 # -o orderer.leonimurilo.com:7050 \
 # -c $CHANNEL_NAME \
 # -f /etc/hyperledger/configtx/channel.tx
-
-echo "========= ${Cyan}Done!${NC}"
-
-for ORG in "${ORGS_LIST[@]}"
-do
-  ORG_MSP="$(tr '[:lower:]' '[:upper:]' <<< ${ORG:0:1})${ORG:1}MSP"
-
-  echo
-  echo "========= Joining channel on ${Purple}peer0.$ORG.leonimurilo.com${NC}"
-
-  docker exec \
-  -e "CORE_PEER_LOCALMSPID=$ORG_MSP" \
-  -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@$ORG.leonimurilo.com/msp" \
-  peer0.$ORG.leonimurilo.com \
-  peer channel fetch 0 $CHANNEL_NAME.block -o orderer.leonimurilo.com:7050 -c "$CHANNEL_NAME" && peer channel join -b $CHANNEL_NAME.block
-
-  echo "========= ${Cyan}Done!${NC}"
-  echo
-  echo
-done
+#
+# echo -e "========= ${Cyan}Done!${NC}"
+#
+# for ORG in "${ORGS_LIST[@]}"
+# do
+#   ORG_MSP="$(tr '[:lower:]' '[:upper:]' <<< ${ORG:0:1})${ORG:1}MSP"
+#
+#   echo -e
+#   echo -e "========= Joining channel on ${Purple}peer0.$ORG.leonimurilo.com${NC}"
+#
+#   docker exec \
+#   -e "CORE_PEER_LOCALMSPID=$ORG_MSP" \
+#   -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@$ORG.leonimurilo.com/msp" \
+#   peer0.$ORG.leonimurilo.com \
+#   peer channel fetch 0 $CHANNEL_NAME.block -o orderer.leonimurilo.com:7050 -c "$CHANNEL_NAME" && peer channel join -b $CHANNEL_NAME.block
+#
+#   echo -e "========= ${Cyan}Done!${NC}"
+#   echo -e
+#   echo -e
+# done
 
 exit 0
